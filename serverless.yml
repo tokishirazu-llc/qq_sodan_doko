@@ -1,0 +1,28 @@
+service: qq-sodan-doko
+provider:
+  name: aws
+  runtime: provided
+  memorySize: 128
+  region: ap-northeast-1
+  stage: ${opt:stage, self:custom.defaultStage}
+custom:
+  defaultStage: dev
+  otherfile:
+    environment:
+      dev: ${file(./conf/dev.yml)}
+      prd: ${file(./conf/prd.yml)}
+plugins:
+  - serverless-plugin-custom-binary
+package:
+  individually: true
+functions:
+  line_callback:
+    handler: api
+    environment: ${self:custom.otherfile.environment.${self:provider.stage}}
+    package:
+      artifact: api.zip
+    events:
+      - http:
+          path: /line_callback
+          method: POST
+          cors: true

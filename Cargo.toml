@@ -1,0 +1,23 @@
+[package]
+name = "qq_sodan_doko"
+version = "0.1.0"
+edition = "2018"
+
+[target.x86_64-unknown-linux-musl]
+rustflags = ["-C", "link-args= -static"]
+
+[dependencies]
+tokio = "1.6.0"
+rand = "0.7"
+log = "*"
+chrono = "*"
+simple_logger = "*"
+lambda_runtime = "0.3.0"
+# lambda_http = { version = "0.3.0", git = "https://github.com/awslabs/aws-lambda-rust-runtime.git" }
+lambda_http = { version = "0.3.0"}
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "*"
+thiserror = "1.0"
+line-bot-sdk-rust = { version = "0.1.2", path = "vendor/line-bot-sdk-rust" }
+reqwest = {version = "0.11.0", features=["json"]}
+futures = "0.3"

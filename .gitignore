@@ -1,0 +1,11 @@
+.serverless
+
+Cargo.lock
+conf/dev.yml
+conf/prd.yml
+
+/target
+/vendor
+*.zip
+
+richmenu/richmenu.png
