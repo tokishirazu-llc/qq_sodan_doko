@@ -89,7 +89,7 @@ def create_user_richmenu(line_bot_api):
                 ),
                 action=URIAction(
                     label='hp',
-                    uri="https://github.com/alivelime/qq_sodan_doko",
+                    uri="https://github.com/tokishirazu-llc/qq_sodan_doko",
                 ),
             ),
         ]

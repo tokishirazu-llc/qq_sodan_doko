@@ -6,7 +6,8 @@ use line::events::messages::MessageType;
 use line::events::{Event, EventType};
 use line::messages::{SendMessageType, TextMessage};
 
-use crate::model::area::{get_help_line, Area, HelpLineType};
+use crate::model::area::{Area, HelpLineType};
+use crate::repository::area::get_help_line;
 use crate::service::google_map_api::get_address_from_latlng;
 
 pub fn main(bot: &LineBot, event: Event) {
@@ -19,8 +20,12 @@ pub fn main(bot: &LineBot, event: Event) {
                     &message.reply_token,
                     match get_address_from_latlng(location.latitude, location.longitude) {
                         Ok(area) => {
-                            let (adult, children) = get_help_line_message(area);
+                            let (anai, adult, children) = get_help_line_message(area);
                             vec![
+                                SendMessageType::TextMessage(TextMessage {
+                                    text: anai,
+                                    emojis: None,
+                                }),
                                 SendMessageType::TextMessage(TextMessage {
                                     text: adult,
                                     emojis: None,
@@ -58,13 +63,30 @@ pub fn main(bot: &LineBot, event: Event) {
 }
 
 // 都道府県と市区町村から対応窓口のテキストを生成する
-fn get_help_line_message(area: Area) -> (String, String) {
-    let (adult, children) = get_help_line(&area);
+fn get_help_line_message(area: Area) -> (String, String, String) {
+    let (anai, adult, children) = get_help_line(&area);
     (
         format!(
-            "{}{}は以下の窓口情報は以下の通りです。\n\n大人\n{}",
+            "{}{}は以下の窓口情報は以下の通りです。\n\n医療機関を探す(自動案内含む)\n{}",
             area.pref,
             area.city,
+            match anai {
+                HelpLineType::InService(help_line) => {
+                    format!("今相談できるようです。\n\n{}", help_line)
+                }
+                HelpLineType::UnknownTime(help_line) => {
+                    format!("曜日によって対応時間が異なります。\n\n{}", help_line)
+                }
+                HelpLineType::OutOfTime(help_line) => {
+                    format!("残念ながら時間外かもしれません\n\n{}", help_line)
+                }
+                HelpLineType::None => {
+                    format!("残念ながら相談窓口はないようです。")
+                }
+            },
+        ),
+        format!(
+            "大人(有人対応)\n{}",
             match adult {
                 HelpLineType::InService(help_line) => {
                     format!("今相談できるようです。\n\n{}", help_line)
@@ -81,7 +103,7 @@ fn get_help_line_message(area: Area) -> (String, String) {
             },
         ),
         format!(
-            "小児\n{}",
+            "小児(有人対応)\n{}",
             match children {
                 HelpLineType::InService(help_line) => {
                     format!("今相談できるようです。\n\n{}", help_line)

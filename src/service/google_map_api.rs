@@ -51,9 +51,7 @@ pub fn get_address_from_latlng(lat: f32, lng: f32) -> Result<Area, reqwest::Erro
             let types = address_component.types;
             if types.contains(&"administrative_area_level_1".to_string()) {
                 area.pref = address_component.long_name;
-            } else if types.contains(&"administrative_area_level_2".to_string()) {
-                area.city = address_component.long_name;
-            } else if types.contains(&"locality".to_string()) {
+            } else if types.contains(&"locality".to_string()) && !types.contains(&"colloquial_area".to_string()) {
                 area.city = address_component.long_name;
             }
         });
