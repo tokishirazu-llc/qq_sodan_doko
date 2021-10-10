@@ -688,7 +688,7 @@ pub fn adult() -> Vec<AreaHelpLine> {
         },
         AreaHelpLine {
             pref: "和歌山県",
-            cities: vec!["田辺氏"],
+            cities: vec!["田辺市"],
             hp: "「救急受診ガイド」と「救急安心センターサービス」について｜田辺市",
             url: "http://www.city.tanabe.lg.jp/shoubo/gyouji/kinnkyuudohanntei.html",
             time: TimeType::Allday {

@@ -116,7 +116,7 @@
 大阪府||[LINK](https://www.city.osaka.lg.jp/shobo/page/0000052526.html)|24時間|24時間|24時間|#7119<br />06-6582-7119
 兵庫県|神戸市|[LINK](https://www.city.kobe.lg.jp/a65055/bosai/kyukyuiryo/telephone.html)|24時間|24時間|24時間|#7119<br />078-331-7119
 奈良県||[LINK](https://www.pref.nara.jp/53886.htm)|24時間|24時間|24時間|#7119<br />0744-20-0119
-和歌山県|田辺氏|[LINK](http://www.city.tanabe.lg.jp/shoubo/gyouji/kinnkyuudohanntei.html)|24時間|24時間|24時間|#7119<br />0739-22-0119
+和歌山県|田辺市|[LINK](http://www.city.tanabe.lg.jp/shoubo/gyouji/kinnkyuudohanntei.html)|24時間|24時間|24時間|#7119<br />0739-22-0119
 和歌山県||[LINK](https://www.wakayama.qq-net.jp/qq30/WP0101/RP010101BL.do)|24時間|24時間|24時間|073-426-1199
 鳥取県||[LINK](https://www.pref.tottori.lg.jp/279398.htm)|午後7時から翌8時|午前8時から翌8時|午前8時から翌8時|#7111<br />03-6667-3372
 広島県|広島市<br />呉市<br />竹原市<br />大竹市<br />東広島市<br />廿日市市<br />安芸高田市<br />江田島市<br />府中町<br />海田町<br />熊野町<br />坂町<br />安芸太田町<br />北広島町|[LINK](https://www.city.hiroshima.lg.jp/site/holidaymedicalcare/14659.html)|24時間|24時間|24時間|#7119<br />082-246-2000
